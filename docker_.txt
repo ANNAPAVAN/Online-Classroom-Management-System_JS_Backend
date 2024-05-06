@@ -1,0 +1,61 @@
+PS E:\POWER_PLAY\powerplay_backend> docker build -t annapavan/hey-nodejs:0.0.1.RELEASE .
+[+] Building 30.8s (10/10) FINISHED                                                                                                                               docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                        0.0s
+ => => transferring dockerfile: 132B                                                                                                                                        0.0s 
+ => [internal] load .dockerignore                                                                                                                                           0.0s 
+ => => transferring context: 2B                                                                                                                                             0.0s 
+ => [internal] load metadata for docker.io/library/node:slim                                                                                                                5.0s 
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                                 0.0s
+ => [1/4] FROM docker.io/library/node:slim@sha256:fb82287cf66ca32d854c05f54251fca8b572149163f154248df7e800003c90b5                                                         22.5s
+ => => resolve docker.io/library/node:slim@sha256:fb82287cf66ca32d854c05f54251fca8b572149163f154248df7e800003c90b5                                                          0.0s 
+ => => sha256:5baccc2fd5a04d836a3ea0b519cd5f8913f0d28cc929c72591d90d8da8ccc79b 42.25MB / 42.25MB                                                                           19.8s 
+ => => sha256:fb82287cf66ca32d854c05f54251fca8b572149163f154248df7e800003c90b5 1.21kB / 1.21kB                                                                              0.0s 
+ => => sha256:e8b5cf62c099fa5f6b90cd6ac35bc4b47f85781251fe44f577c3a29c27f5d8d9 1.37kB / 1.37kB                                                                              0.0s 
+ => => sha256:ec30c8f8680c1477dfd12df7e857706d904765a2b43bfb7555ee000c39381128 7.67kB / 7.67kB                                                                              0.0s 
+ => => sha256:13808c22b207b066ef43572e57e4fb8c6172e887dd9a918c089a174a19371b7a 29.13MB / 29.13MB                                                                           13.1s 
+ => => sha256:234d6279a4a1f4933fe4cc01290802b62f207dd42224cb43c2149db0c76837e8 3.36kB / 3.36kB                                                                              0.3s 
+ => => sha256:1b310c351e5cbca9249e31a827243108c1e49e41040453233229c1951f7525c1 2.70MB / 2.70MB                                                                             11.9s 
+ => => sha256:2824e56dfac4b295f96414e31a3f5a97e67c6fbc0b2ddbf1fb084e56ef467963 450B / 450B                                                                                 12.2s 
+ => => extracting sha256:13808c22b207b066ef43572e57e4fb8c6172e887dd9a918c089a174a19371b7a                                                                                   3.3s 
+ => => extracting sha256:234d6279a4a1f4933fe4cc01290802b62f207dd42224cb43c2149db0c76837e8                                                                                   0.0s 
+ => => extracting sha256:5baccc2fd5a04d836a3ea0b519cd5f8913f0d28cc929c72591d90d8da8ccc79b                                                                                   2.4s 
+ => => extracting sha256:1b310c351e5cbca9249e31a827243108c1e49e41040453233229c1951f7525c1                                                                                   0.1s 
+ => => extracting sha256:2824e56dfac4b295f96414e31a3f5a97e67c6fbc0b2ddbf1fb084e56ef467963                                                                                   0.0s 
+ => [internal] load build context                                                                                                                                           0.0s 
+ => => transferring context: 44.95kB                                                                                                                                        0.0s 
+ => [2/4] WORKDIR /app                                                                                                                                                      0.4s 
+ => [3/4] COPY . /app                                                                                                                                                       0.0s 
+ => [4/4] RUN npm install                                                                                                                                                   2.5s 
+ => exporting to image                                                                                                                                                      0.2s 
+ => => exporting layers                                                                                                                                                     0.2s 
+ => => writing image sha256:299b4915b68a9e10ae680509cd84f74db7717dd0b6b0317a09bfada422247b3a                                                                                0.0s 
+ => => naming to docker.io/annapavan/hey-nodejs:0.0.1.RELEASE                                                                                                               0.0s 
+
+View build details: docker-desktop://dashboard/build/default/default/k
+
+  View a summary of image vulnerabilities and recommendations → docker scout quickview
+PS E:\POWER_PLAY\powerplay_backend> docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS E:\POWER_PLAY\powerplay_backend> docker container run -d -p 8999:8999 annapavan/hey-nodejs:0.0.1.RELEASE
+328f1e11edbba02498f6072f6d16755c932f8e9e00ee5912d37a183d26f76a44
+PS E:\POWER_PLAY\powerplay_backend> docker container ls
+CONTAINER ID   IMAGE                                COMMAND                  CREATED         STATUS         PORTS                    NAMES
+328f1e11edbb   annapavan/hey-nodejs:0.0.1.RELEASE   "docker-entrypoint.s…"   5 seconds ago   Up 4 seconds   0.0.0.0:8999->8999/tcp   pedantic_jones
+PS E:\POWER_PLAY\powerplay_backend> docker container stop 328f
+328f
+PS E:\POWER_PLAY\powerplay_backend> docker container ls       
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS E:\POWER_PLAY\powerplay_backend> docker push annapavan\hey-nodejs:0.0.1.RELEASE 
+invalid reference format
+PS E:\POWER_PLAY\powerplay_backend> docker push annapavan/hey-nodejs:0.0.1.RELEASE 
+The push refers to repository [docker.io/annapavan/hey-nodejs]
+914914a1467b: Preparing                                                                                                                                                          
+914914a1467b: Pushed
+4d756e0a70d4: Pushed
+0f28e5df01c9: Mounted from library/node
+468d3632b3b5: Mounted from library/node
+e83ef7303abe: Mounted from library/node
+3f0edce9c1b7: Mounted from library/node
+1f00ff201478: Mounted from library/node
+0.0.1.RELEASE: digest: sha256:872099d7a860935ab45f673c39508daceeff11cf0d10f6b38ca56a1c89f71385 size: 1993
+PS E:\POWER_PLAY\powerplay_backend> 
